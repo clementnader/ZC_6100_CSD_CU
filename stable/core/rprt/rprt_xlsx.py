@@ -2025,11 +2025,12 @@ class ReporterXlsx(object):
 
     def _set_page_format(self, work_sheet, str_constr_type):
 
-        work_sheet.set_printer_settings(Worksheet.PAPERSIZE_A4, Worksheet.ORIENTATION_LANDSCAPE)
+        work_sheet.set_printer_settings(paper_size=Worksheet.PAPERSIZE_A4,
+                                        orientation=Worksheet.ORIENTATION_LANDSCAPE)
         work_sheet.page_margins.left = 0.6
         work_sheet.page_margins.right = 0.6
         work_sheet.page_margins.top = 0.7
-        work_sheet.sheet_view.view = 'pageLayout'
+        # work_sheet.sheet_view.view = 'pageLayout'
         work_sheet.sheet_view.showGridLines = False
 
         work_sheet.column_dimensions['A'].width = 14
@@ -2052,10 +2053,10 @@ class ReporterXlsx(object):
 
         elif SwConst.SW_CONST_EXE_MAP_OFF_SECT == str_constr_type:
 
-            work_sheet.column_dimensions['C'].width = 19
-            work_sheet.column_dimensions['D'].width = 39
+            work_sheet.column_dimensions['C'].width = 32
+            work_sheet.column_dimensions['D'].width = 54
             work_sheet.column_dimensions['E'].width = 14
-            work_sheet.column_dimensions['F'].width = 25
+            work_sheet.column_dimensions['F'].width = 40
             work_sheet.column_dimensions['G'].width = 14
 
         elif SwConst.SW_CONST_EXE_INSTR_MAND == str_constr_type or SwConst.SW_CONST_EXE_INSTR_FORB == str_constr_type \
@@ -2083,18 +2084,18 @@ class ReporterXlsx(object):
         elif SwConst.SW_CONST_EXE_COMM_STR == str_constr_type:
 
             work_sheet.column_dimensions['C'].width = 89
-            work_sheet.column_dimensions['D'].width = 12
+            work_sheet.column_dimensions['D'].width = 15
             work_sheet.column_dimensions['E'].width = 9
 
         elif SwConst.SW_CONST_LOG_COMP_OPT == str_constr_type:
 
             work_sheet.column_dimensions['C'].width = 38
             work_sheet.column_dimensions['D'].width = 11
-            work_sheet.column_dimensions['E'].width = 64
+            work_sheet.column_dimensions['E'].width = 78
 
         elif SwConst.SW_CONST_LOG_OCCUR_WARN == str_constr_type:
 
-            work_sheet.column_dimensions['C'].width = 22
+            work_sheet.column_dimensions['C'].width = 28
             work_sheet.column_dimensions['D'].width = 9
             work_sheet.column_dimensions['E'].width = 9
             work_sheet.column_dimensions['F'].width = 1
