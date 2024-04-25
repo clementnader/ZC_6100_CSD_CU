@@ -1,0 +1,26 @@
+/* Estampillage logiciel SYNERGY */
+const char csd_ppc_signature[] =
+"\r\n"
+"\r\n"
+"@(#)"
+/*  LOGICIEL:  */
+   "x01088_pas_lcap3_mv6100"
+   " | "
+/*  VERSION:  */
+   "x01088_pax010"
+   " | "
+/*  PARAMETRAGE:  */
+   "ZC_01"
+   " | "
+/*  REF_SYNERGY:  */
+   "x01088_pas_lcap3_mv6100.elf~HZ9ZC_BSITE_3.4.1_3_B0:ELF:SYNCZC11#1"
+"\r\n"
+"\r\n"
+   "-------    (c) "
+/*  ANNEE:  */
+   "2022"
+   " ANSALDO-STS  "
+"\r\n"
+"\r\n"
+"\r\n"
+;

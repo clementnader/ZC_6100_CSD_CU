@@ -1,0 +1,9 @@
+##
+##220610_13h17_x01063_pas_lcap3_src_param_tgz
+##
+../x01063_bch/x01063_pas_lcap3_conf_log_gen_.ado
+x01063_pas_lcap3_src_param_tgz.mk
+../tech_ppc_mvme6100/ppc_mvme6100_rtgz.mk
+../tech_ppc_mvme6100
+x01063_pas_lcap3_src_param.tgz
+x01063_pas_lcap3_src_param_tgz.log

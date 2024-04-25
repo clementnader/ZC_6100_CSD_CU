@@ -1,0 +1,25 @@
+/* TAILLE_APPLI =        2999 */
+ .globl _CHECKSUM
+ .section .applicks
+ .align 2
+_CHECKSUM:
+.byte 0x09
+.byte 0xFE
+.byte 0xC5
+.byte 0x38
+.byte 0xFF /*Octet d entrelacement*/
+.byte 0x9B
+.byte 0xAC
+.byte 0x70
+.byte 0x52
+.byte 0xFF /*Octet d entrelacement*/
+.byte 0xF7
+.byte 0x46
+.byte 0x00
+.byte 0x80
+.byte 0xFF /*Octet d entrelacement*/
+.byte 0x9E
+.byte 0x1E
+.byte 0xDA
+.byte 0x97
+.byte 0xFF /*Octet d entrelacement*/

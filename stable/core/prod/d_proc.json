@@ -1,0 +1,396 @@
+{
+    "nb_bits": 32,
+    "endianness": "big-endian",
+    "prim_opcd_field":{
+        "name": "OPCD",
+        "bit_start": 0,
+        "bit_length": 6
+    },
+    "sec_opcd_field": "XO",
+    "sec_opcd_masks": {
+        "X_XL_XFX_XFL_VX": {
+            "bit_start": 21,
+            "bit_length": 10
+        },
+        "VA": {
+            "bit_start": 26,
+            "bit_length": 6
+        },
+        "VX": {
+            "bit_start": 21,
+            "bit_length": 11
+        },
+        "VXR": {
+            "bit_start": 22,
+            "bit_length": 10
+        }
+    },   
+    "fields":{
+        "A": 1,
+        "AA": 1,
+        "BD": 14,
+        "BI": 5,
+        "BO": 5,
+        "LI": 24,
+        "LK": 1,
+        "rA": 5,
+        "rB": 5,
+        "rC": 5,
+        "Rc": 1,
+        "rD": 5,
+        "rS": 5,
+        "SH": 5,
+        "SIMM_5": 5,
+        "SIMM_16": 16,
+        "spr": 10,
+        "SR": 4,
+        "STRM": 2,
+        "T": 1,
+        "UIMM_5": 5,
+        "UIMM_16": 16,
+        "vA": 5,
+        "vB": 5,
+        "vC": 5,
+        "vD": 5,
+        "vS": 5
+    },
+    "forms": {
+        "B": {
+            "fields": {"BO": 6, "BI": 11, "BD": 16, "AA": 30, "LK": 31}
+        },
+        "I": {
+            "fields": {"LI": 6, "AA": 30, "LK": 31}
+        },
+        "X_3": {
+            "fields": {"rD": 6},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "X_10": {
+            "fields": {"rS": 6, "rB": 16},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "D_2": {
+            "fields": {"rD": 6, "rA": 11, "SIMM_16": 16}
+        },
+        "X_11": {
+            "fields": {"rS": 6},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "X_12": {
+            "fields": {"rS": 6, "SR": 12},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "X_24": {
+            "fields": {"rA": 11, "rB": 16},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "X_25": {
+            "fields": {"rB": 16},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "X_26": {
+            "fields": {},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "X_27": {
+            "fields": {"vD": 6, "vA": 11, "vB": 16},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "X_28": {
+            "fields": {"vS": 6, "vA": 11, "vB": 16},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "X_29": {
+            "fields": {"vD": 6, "rA": 11, "rB": 16},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "X_30": {
+            "fields": {"T": 6, "STRM": 9},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "X_31": {
+            "fields": {"A": 6, "STRM": 9},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "XL_4": {
+            "fields": {},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "XFX_1": {
+            "fields": {"rD": 6,"spr": 11},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "XFX_3": {
+            "fields": {"rS": 6, "spr": 11},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "VA_1": {
+            "fields": {"vD": 6, "vA": 11, "vB": 16, "vC": 21},
+            "sec_opcd_mask": "VA"
+        },
+        "VA_2": {
+            "fields": {"vD": 6, "vA": 11, "vB": 16, "SH": 22},
+            "sec_opcd_mask": "VA"
+        },
+        "VX_1": {
+            "fields": {"vD": 6, "vA": 11, "vB": 16},
+            "sec_opcd_mask": "VX"
+        },
+        "VX_2": {
+            "fields": {"vD": 6},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "VX_3": {
+            "fields": {"vB": 16},
+            "sec_opcd_mask": "X_XL_XFX_XFL_VX"
+        },
+        "VX_4": {
+            "fields": {"vD": 6, "vB": 16},
+            "sec_opcd_mask": "VX"
+        },
+        "VX_5": {
+            "fields": {"vD": 6, "UIMM_5": 11,"vB": 16},
+            "sec_opcd_mask": "VX"
+        },
+        "VX_6": {
+            "fields": {"vD": 6, "SIMM_5": 11},
+            "sec_opcd_mask": "VX"
+        },
+        "VXR": {
+            "fields": {"vD": 6, "vA": 11, "vB": 16, "Rc": 21},
+            "sec_opcd_mask": "VXR"
+        }
+    },
+    "instr": {
+        "4": {
+            "VA_1": {
+                "32": "vmhaddshs",
+                "33": "vmhraddshs",
+                "34": "vmladduhm",
+                "36": "vmsumubm",
+                "37": "vmsummbm",
+                "38": "vmsumuhm",
+                "39": "vmsumuhs",
+                "40": "vmsumshm",
+                "41": "vmsumshs",
+                "42": "vsel",
+                "43": "vperm",
+                "46": "vmaddfp",
+                "47": "vnmsubfp"
+            },
+            "VA_2": {
+                "44": "vsldoi"
+            },
+            "VX_1": {
+                "0": "vaddubm",
+                "64": "vadduhm",
+                "384": "vaddcuw",
+                "512": "vaddubs", 
+                "576": "vadduhs",
+                "128": "vadduwm", 
+                "640": "vadduws", 
+                "768": "vaddsbs", 
+                "832": "vaddshs", 
+                "896": "vaddsws", 
+                "1024": "vsububm", 
+                "1088": "vsubuhm", 
+                "1152": "vsubuwm", 
+                "1408": "vsubcuw", 
+                "1536": "vsububs", 
+                "1600": "vsubuhs", 
+                "1664": "vsubuws", 
+                "1792": "vsubsbs", 
+                "1856": "vsubshs", 
+                "1920": "vsubsws", 
+                "2": "vmaxub", 
+                "66": "vmaxuh", 
+                "130": "vmaxuw", 
+                "258": "vmaxsb", 
+                "322": "vmaxsh", 
+                "386": "vmaxsw", 
+                "514": "vminub", 
+                "578": "vminuh", 
+                "642": "vminuw", 
+                "770": "vminsb", 
+                "834": "vminsh", 
+                "898": "vminsw", 
+                "1026": "vavgub", 
+                "1090": "vavguh", 
+                "1154": "vavguw", 
+                "1282": "vavgsb", 
+                "1346": "vavgsh", 
+                "1410": "vavgsw", 
+                "4": "vrlb", 
+                "68": "vrlh", 
+                "132": "vrlw", 
+                "260": "vslb", 
+                "324": "vslh", 
+                "388": "vslw", 
+                "452": "vsl", 
+                "516": "vsrb", 
+                "580": "vsrh", 
+                "644": "vsrw", 
+                "708": "vsr", 
+                "772": "vsrab", 
+                "836": "vsrah", 
+                "900": "vsraw", 
+                "1028": "vand", 
+                "1092": "vandc", 
+                "1156": "vor", 
+                "1284": "vnor", 
+                "8": "vmuloub", 
+                "72": "vmulouh", 
+                "264": "vmulosb", 
+                "328": "vmulosh", 
+                "520": "vmuleub", 
+                "584": "vmuleuh", 
+                "776": "vmulesb", 
+                "840": "vmulesh", 
+                "1544": "vsum4ubs", 
+                "1800": "vsum4sbs", 
+                "1608": "vsum4shs", 
+                "1672": "vsum2sws", 
+                "1928": "vsumsws", 
+                "10": "vaddfp", 
+                "74": "vsubfp", 
+                "1034": "vmaxfp", 
+                "1098": "vminfp", 
+                "12": "vmrghb", 
+                "76": "vmrghh", 
+                "140": "vmrghw", 
+                "268": "vmrglb", 
+                "332": "vmrglh", 
+                "396": "vmrglw", 
+                "1036": "vslo", 
+                "1100": "vsro", 
+                "14": "vpkuhum", 
+                "78": "vpkuwum", 
+                "142": "vpkuhus", 
+                "206": "vpkuwus", 
+                "270": "vpkshus", 
+                "334": "vpkswus", 
+                "398": "vpkshss", 
+                "462": "vpkswss",
+                "782": "vpkpx", 
+                "1220": "vxor"
+            },
+            "VX_2": {
+                "1540": "mfvscr"
+            },
+            "VX_3": {
+                "1604": "mtvscr"
+            },
+            "VX_4": {
+                "266": "vrefp", 
+                "330": "vrsqrtefp", 
+                "394": "vexptefp", 
+                "458": "vlogefp", 
+                "522": "vrfin", 
+                "586": "vrfiz", 
+                "650": "vrfip", 
+                "714": "vrfim", 
+                "526": "vupkhsb", 
+                "590": "vupkhsh", 
+                "654": "vupklsb", 
+                "718": "vupklsh", 
+                "846": "vupkhpx", 
+                "974": "vupklpx"
+            },
+            "VX_5": {
+                "778": "vcfux", 
+                "842": "vcfsx", 
+                "970": "vctsxs",
+                "906": "vctuxs", 
+                "524": "vspltb", 
+                "588": "vsplth", 
+                "652": "vspltw"
+            },
+            "VX_6": {
+                "780": "vspltisb",
+                "844": "vspltish",
+                "908": "vspltisw"
+            },
+            "VXR": {
+                "966": "vcmpbfpx", 
+                "198": "vcmpeqfpx",
+                "6": "vcmpequbx",
+                "70": "vcmpequhx", 
+                "134": "vcmpequwx", 
+                "454": "vcmpgefpx", 
+                "710": "vcmpgtfpx", 
+                "774": "vcmpgtsbx", 
+                "838": "vcmpgtshx", 
+                "902": "vcmpgtswx", 
+                "518": "vcmpgtubx", 
+                "582": "vcmpgtuhx", 
+                "646": "vcmpgtuwx"
+            }
+        },
+        "14": {
+            "D_2": "addi"
+        },
+        "16": {
+            "B": "bcx"
+        },
+        "18": {
+            "I": "bx"
+        },
+        "19": {
+            "XL_4": {
+                "150": "isync"
+            }
+        },
+        "31": {
+            "X_3": {
+                "83": "mfmsr"
+            },
+            "X_10": {
+                "242": "mtsrin"
+            },
+            "X_11": {
+                "146": "mtmsr"                
+            },
+            "X_12": "mtsr",
+            "X_24": {
+                "758": "dcba"
+            },
+            "X_25": {
+                "978": "tlbld"
+            },
+            "X_26": {
+                "598": "sync"
+            },
+            "X_27": {
+                "7": "lvebx"
+            },
+            "X_28": {
+                "135": "stvebx",
+                "167": "stvehx",
+                "199": "stvewx",
+                "231": "stvx",
+                "487": "stvxl"
+            },
+            "X_29": {
+                "39": "lvehx",
+                "71": "lvewx",
+                "6": "lvsl",
+                "38": "lvsr",
+                "103": "lvx",
+                "359": "lvxl"
+            },
+            "X_30": {
+                "342": "dst",
+                "374": "dstst"
+            },
+            "X_31": {
+                "822": "dss"
+            },
+            "XFX_1": {
+                "339": "mfspr"
+            },
+            "XFX_3": {
+                "467": "mtspr"
+            }
+        }
+    }
+}

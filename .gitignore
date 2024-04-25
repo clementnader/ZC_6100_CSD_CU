@@ -1,0 +1,8 @@
+.git/
+.idea/
+venv/
+__pycache__
+*.pyc
+stable/*.xlsx
+stable/cfg/*
+stable/config.json

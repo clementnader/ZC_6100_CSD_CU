@@ -1,0 +1,97 @@
+Environnement UNIX : /CCMWA2/ENV/TECH_UX/tech_ux~UX_3.0_10/tech_ux
+Environnement ACM  : /CCMWA2/ENV/TECH_ACM/tech_acm~ACM_3.0_2/tech_acm
+Traitement pre-generation x01063_pas_lcap1_src_param.tgz ...
+CCM_ADDR = srvsyn:49945:10.24.37.57
+CCM_DB   = /DB_SYNCBTC2/SYNCBTC2
+Environnement CCM
+CCM_ADDR     = srvsyn:49945:10.24.37.57
+CCM_DB       = /DB_SYNCBTC2/SYNCBTC2
+
+Environnement ACM
+ACM_CCMADDR  = srvsyn:49945:10.24.37.57
+ACM_PRRBASE  = SYNCBTC2
+ACM_PRJCVID  = 71454
+ACM_PRJOBJN  = x01063cap1_mvme6100~ML4ZC_BSITE_3.4.1_15:project:SYNCBTC2#1
+ACM_PRJSTATE = prep
+ACM_PRJROLE  = build_mgr
+ACM_PRJWA    = /CCMWA2/ml4zc/cdpml4zc/WA/x01063_master-ML4ZC_BSITE_3.4.1_15/x01063_master/x01063_dev
+ACM_PRJN     = x01063cap1_mvme6100
+ACM_PRJR     = ML4ZC_BSITE/3.4.1
+ACM_PRJV     = ML4ZC_BSITE_3.4.1_15
+ACM_PRJWADIR = /CCMWA2/ml4zc/cdpml4zc/WA/x01063_master-ML4ZC_BSITE_3.4.1_15/x01063_master/x01063_dev/x01063cap1_mvme6100
+
+ACM_OBJN     = x01063_pas_lcap1_src_param.tgz
+ACM_OBJV     = ML4ZC_BSITE_3.4.1_15_B0
+ACM_OBJID    = x01063_pas_lcap1_src_param.tgz~ML4ZC_BSITE_3.4.1_15_B0:TGZ:SYNCBTC2#2
+LOAD_BALANCING=YES
+SELECTED_HOSTNAME=ws-prd35
+gnumake: Entering directory `/nfs/srvprd/CCMWA2/ml4zc/cdpml4zc/WA/x01063_master-ML4ZC_BSITE_3.4.1_15/x01063_master/x01063_dev/x01063cap1_mvme6100'
+mkdir -p _wk/x01063_pas_lcap1_src_param_tgz
+cp ../tech_ppc_mvme6100/ppc_mvme6100_renv.bat _wk/x01063_pas_lcap1_src_param_tgz/ppc_mvme6100_renv.bat
+cp ../tech_ppc_mvme6100/ppc_mvme6100_rgnatchop.bat _wk/x01063_pas_lcap1_src_param_tgz/ppc_mvme6100_rgnatchop.bat
+cp ../tech_ppc_mvme6100/ppc_mvme6100_rtgz.bat _wk/x01063_pas_lcap1_src_param_tgz/ppc_mvme6100_rtgz.bat
+mkdir -p _wk/x01063_pas_lcap1_src_param_tgz/_srcs/src_ada
+mkdir -p _wk/x01063_pas_lcap1_src_param_tgz/_srcs/src_c
+mkdir -p _wk/x01063_pas_lcap1_src_param_tgz/_srcs/src_asm
+mkdir -p _wk/x01063_pas_lcap1_src_param_tgz/_srcs/src
+ux_pp.ss ../x01063_bch/x01063_pas_lcap1_conf_log_gen_.ado -I "../x01063_bch " -var "Mode_GNAT" > _wk/x01063_pas_lcap1_src_param_tgz/_srcs/src_ada//x01063_pas_lcap1_conf_log_gen_.ado
+cd _wk/x01063_pas_lcap1_src_param_tgz; tar cvf - _srcs | gzip -c >| ppc_srcs.tgz
+a _srcs
+a _srcs/src_ada
+a _srcs/src_ada/x01063_pas_lcap1_conf_log_gen_.ado 1 blocks
+a _srcs/src_c
+a _srcs/src_asm
+a _srcs/src
+cd _wk/x01063_pas_lcap1_src_param_tgz; ux_ftp.ss -n -t ws-prd35 -dir "220610_13h17_x01063_pas_lcap1_src_param_tgz" -f ppc_cmd.ftp -i "ppc_x01063_pas_lcap1_src_param_tgz.bat ppc_mvme6100_renv.bat ppc_mvme6100_rgnatchop.bat ppc_mvme6100_rtgz.bat"
+06-10-22  12:17PM                  764 ppc_x01063_pas_lcap1_src_param_tgz.bat
+06-10-22  12:17PM                 1103 ppc_mvme6100_renv.bat
+06-10-22  12:17PM                  569 ppc_mvme6100_rgnatchop.bat
+06-10-22  12:17PM                  776 ppc_mvme6100_rtgz.bat
+cd _wk/x01063_pas_lcap1_src_param_tgz; ux_ftp.ss -n -t ws-prd35 -dir "220610_13h17_x01063_pas_lcap1_src_param_tgz/x01063cap1_mvme6100" -f ppc_tmp_tgz.ftp -i "ppc_srcs.tgz"
+220610_13h17_x01063_pas_lcap1_src_param_tgz: Impossible de créer un fichier déjà existant. 
+06-10-22  12:17PM                  410 ppc_srcs.tgz
+cd _wk/x01063_pas_lcap1_src_param_tgz; for f in ppc_srcs.tgz ; do remsh ws-prd35 'D:\CCM\tools\rshtgz 220610_13h17_x01063_pas_lcap1_src_param_tgz\x01063cap1_mvme6100' $f '/D' ; done
+remsh ws-prd35 'D:\CCM\tools\rshcmd 220610_13h17_x01063_pas_lcap1_src_param_tgz ppc_x01063_pas_lcap1_src_param_tgz.bat'
+">D:\FTP\220610_13h17_x01063_pas_lcap1_src_param_tgz\ppc_x01063_pas_lcap1_src_param_tgz.bat"
+FMK=x01063_pas_lcap1_src_param.tgz
+MODULE=
+FATT=x01063_pas_lcap1_src_param_tgz
+splitting _srcs\src_ada\\x01063_pas_lcap1_conf_log_gen_.ado into:
+   _wk\/x01063_pas_lcap1_src_param_tgz\src_ada\csd_lcap_conf_logiciel_gen.ads
+FMK=x01063_pas_lcap1_src_param.tgz
+MODULE=
+FATT=x01063_pas_lcap1_src_param_tgz
+_srcs\src_c\\*.* 
+Le fichier sp‚cifi‚ est introuvable.
+        0 fichier(s) copi‚(s).
+_srcs\src_asm\\*.* 
+Le fichier sp‚cifi‚ est introuvable.
+        0 fichier(s) copi‚(s).
+_srcs\src\\*.* 
+Le fichier sp‚cifi‚ est introuvable.
+        0 fichier(s) copi‚(s).
+x01063_pas_lcap1_src_param_tgz/
+x01063_pas_lcap1_src_param_tgz/src/
+x01063_pas_lcap1_src_param_tgz/src_ada/
+x01063_pas_lcap1_src_param_tgz/src_ada/csd_lcap_conf_logiciel_gen.ads
+x01063_pas_lcap1_src_param_tgz/src_asm/
+x01063_pas_lcap1_src_param_tgz/src_c/
+ux_ftp.ss -n -t ws-prd35 -dir "220610_13h17_x01063_pas_lcap1_src_param_tgz/x01063cap1_mvme6100" -f _wk/x01063_pas_lcap1_src_param_tgz/x01063_pas_lcap1_src_param_tgz.ftp -o "x01063_pas_lcap1_src_param.tgz"
+06-10-22  12:17PM                  410 x01063_pas_lcap1_src_param.tgz
+Dependences ...
+Build_Ok
+gnumake: Leaving directory `/nfs/srvprd/CCMWA2/ml4zc/cdpml4zc/WA/x01063_master-ML4ZC_BSITE_3.4.1_15/x01063_master/x01063_dev/x01063cap1_mvme6100'
+Traitement post-generation x01063_pas_lcap1_src_param.tgz ...
+acm_id.ss -r -cv -version "ML4ZC_BSITE_3.4.1_15_B0" x01063_pas_lcap1_src_param.tgz
+x01063_pas_lcap1_src_param.tgz~ML4ZC_BSITE_3.4.1_15_B0:TGZ:SYNCBTC2#2
+ccm reconcile -update_db x01063_pas_lcap1_src_param.tgz -task SYNCBTC2#1103
+acm_id.ss -r -cv -version "ML4ZC_BSITE_3.4.1_15_B0" x01063_pas_lcap1_src_param_tgz.log
+x01063_pas_lcap1_src_param_tgz.log~ML4ZC_BSITE_3.4.1_15_B0:LOG:SYNCBTC2#2
+ccm reconcile -update_db x01063_pas_lcap1_src_param_tgz.log -task SYNCBTC2#1103
+acm_id.ss -r -cv -version "ML4ZC_BSITE_3.4.1_15_B0" x01063_pas_lcap1_src_param_tgz.dep
+x01063_pas_lcap1_src_param_tgz.dep~ML4ZC_BSITE_3.4.1_15_B0:DEP:SYNCBTC2#2
+ccm reconcile -update_db x01063_pas_lcap1_src_param_tgz.dep -task SYNCBTC2#1103
+acm_fvl.ss -t SYNCBTC2#1103 x01063_pas_lcap1_src_param.tgz
+The current task is set to:
+SYNCBTC2#1103: ML4ZC_BSITE/3.4.1 : 10-06-22 13:08:40 x01063_master~ML4ZC_BSITE_3.4.1_15
+x01063_pas_lcap1_src_param_tgz.fvl~ML4ZC_BSITE_3.4.1_15_B0:FVL:SYNCBTC2#2

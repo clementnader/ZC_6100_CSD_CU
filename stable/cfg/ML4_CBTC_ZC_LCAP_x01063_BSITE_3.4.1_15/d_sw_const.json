@@ -1,0 +1,499 @@
+{
+    "CSD_GPSC/CU14": {
+        "type": "EXE_INSTR_MAND",
+        "files":[
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "instr": {
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf" : {
+                "usrAppInit": {
+                    "8c": {
+                        "mnem": "addi", 
+                        "fields": {"SIMM_16": 900}
+                    }
+                }
+            },
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf" : {
+                "usrAppInit": {
+                    "8c": {
+                        "mnem": "addi", 
+                        "fields": {"SIMM_16": 1000}
+                    }
+                }
+            },
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf" : {
+                "usrAppInit": {
+                    "8c": {
+                        "mnem": "addi", 
+                        "fields": {"SIMM_16": 1100}
+                    }
+                }
+            }        
+        }
+    },
+    "CSD_GPSC/CU15": {
+        "type": "EXE_MAP_OFF_SECT",
+        "files": [
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "sect": {
+            ".text" : {
+                "ref": "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+                "off": {
+                    "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf": "100",
+                    "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf": "200"
+                },
+                "excl": [
+                    ".text",
+                    "Letext",
+                    "_CHECKSUM",
+                    "gcc2_compiled.",
+                    "_TEC_DEB_APPLI",
+                    "_sysInit",
+                    "csd_ppc_signature"
+                ]
+            },
+            ".data" : {
+                "ref": "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+                "off": {
+                    "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf": "100",
+                    "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf": "200"
+                },
+                "excl": [
+                    ".data"
+                ]
+            }
+
+        }
+    },
+    "CSD_PPC_CU33": {
+        "type": "EXE_MAP_OCCUR_SYMB",
+        "files": [
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "symb": {
+            ".text" : [
+                "test_bits_colles_a_0",
+                "test_bits_colles_a_0_1",
+                "test_bits_colles_a_0_2",
+                "test_bits_colles_a_1",
+                "test_bits_colles_a_1_1",
+                "test_bits_colles_a_1_2"
+            ]
+        }
+    },
+    "CSD_PPC_CU42": {
+        "type": "EXE_COMM_STR",
+        "files": [
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "comm": [
+            {
+                "string": "GCC: (GNU) gcc-2.96 19990621 VxWorks AltiVec VxWorks 5.4",
+                "number": 20,
+                "min": false
+            },
+            {
+                "string": "GCC: (GNU) 4.1.3 20071221 for GNAT Pro 6.1.1 (20080111)",
+                "number": 166,
+                "min": true
+            },
+            {
+                "string": "GCC: (GNU) gcc-2.96 19990621 VxWorks AltiVec VxWorks 5.4",
+                "number": 220,
+                "min": false
+            },
+            {
+                "string": "GCC: (GNU) cygnus-2.7.2-960126",
+                "number": 1,
+                "min": false
+            },
+            {
+                "string": "GCC: (GNU) gcc-2.96 19990621 VxWorks AltiVec VxWorks 5.4",
+                "number": 62,
+                "min": true
+            }
+        ]
+    },
+    "CSD_PPC_CU51": {
+        "type": "LOG_OCCUR_WARN",
+        "files": [
+            "x01063_pas_lcap1_mv6100_elf-ML4ZC_BSITE_3.4.1_15_B0.log",
+            "x01063_pas_lcap2_mv6100_elf-ML4ZC_BSITE_3.4.1_15_B0.log",
+            "x01063_pas_lcap3_mv6100_elf-ML4ZC_BSITE_3.4.1_15_B0.log"
+        ]
+    },
+    "CSD_PPC_CU62": {
+        "type": "EXE_MAP_LIM_SECT",
+        "files": [
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "sect": {
+            ".text": {
+                "start" : {
+                    "symb_sect" : ".text",
+                    "symb_name" : "_TEC_DEB_APPLI",
+                    "symb_addr_incl" : true
+                },
+                "end" : {
+                    "symb_sect" : "*ABS*",
+                    "symb_name" : "_TEC_FIN_APPLI",
+                    "symb_addr_incl" : false
+                },
+                "excl": [
+                    ".text",
+                    "_CHECKSUM",
+                    "csd_ppc_signature"
+                ]
+            }
+        }  
+    },
+    "CSD_PPC_CU63": {
+        "type": "EXE_MAP_LIM_SECT",
+        "files": [
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "sect": {
+            ".text": {
+                "end" : {
+                    "symb_sect" : ".data",
+                    "symb_name" : "_D_TEST",
+                    "symb_addr_incl" : false
+                }
+            }
+        }  
+    },
+    "CSD_PPC_CU64": {
+        "type": "EXE_MAP_LIM_SECT",
+        "files": [
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "sect": {
+            ".data": {
+                "start" : {
+                    "symb_sect" : ".data",
+                    "symb_name" : "_D_TEST",
+                    "symb_addr_incl" : true
+                },
+                "end" : {
+                    "symb_sect" : ".data",
+                    "symb_name" : "_D_TEST",
+                    "symb_off_sect": "*ABS*",
+                    "symb_off_name": "_L_TEST",
+                    "symb_addr_incl" : false
+                }
+            }
+        }  
+    },
+    "CSD_PPC_CU68": {
+        "type": "LOG_COMP_OPT",
+        "files": [
+            "x01063_pas_lcap1_mv6100_elf-ML4ZC_BSITE_3.4.1_15_B0.log",
+            "x01063_pas_lcap2_mv6100_elf-ML4ZC_BSITE_3.4.1_15_B0.log",
+            "x01063_pas_lcap3_mv6100_elf-ML4ZC_BSITE_3.4.1_15_B0.log"
+        ],
+        "comp_opt": {
+            "comp": "PPC_WRS_VXW_GCC",
+            "lang": "Ada",
+            "opt": {
+                "-gnateD" : false,
+                "-gnatVa" : false,
+                "-gnatVc" : false,
+                "-pipe" : false
+            }
+        }
+    },
+    "CSD_PPC_CU70": {
+        "type": "EXE_INSTR_FORB",
+        "files":[
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "instr" : [
+            {"mnem": "vmhaddshs"},
+            {"mnem": "vmhraddshs"},
+            {"mnem": "vmladduhm"},
+            {"mnem": "vmsumubm"},
+            {"mnem": "vmsummbm"},
+            {"mnem": "vmsumuhm"},
+            {"mnem": "vmsumuhs"},
+            {"mnem": "vmsumshm"},
+            {"mnem": "vmsumshs"},
+            {"mnem": "vsel"},
+            {"mnem": "vperm"},
+            {"mnem": "vmaddfp"},
+            {"mnem": "vperm"},
+            {"mnem": "vnmsubfp"},
+            {"mnem": "vsldoi"},
+            {"mnem": "vaddubm"},
+            {"mnem": "vadduhm"},
+            {"mnem": "vaddcuw"},
+            {"mnem": "vaddubs"},
+            {"mnem": "vadduhs"},
+            {"mnem": "vadduwm"},
+            {"mnem": "vadduws"},
+            {"mnem": "vaddsbs"},
+            {"mnem": "vaddshs"},
+            {"mnem": "vaddsws"},
+            {"mnem": "vsububm"},
+            {"mnem": "vsubuhm"},
+            {"mnem": "vsubuwm"},
+            {"mnem": "vsubcuw"},
+            {"mnem": "vsububs"},
+            {"mnem": "vsubuhs"},
+            {"mnem": "vsubuws"},
+            {"mnem": "vsubsbs"},
+            {"mnem": "vsubshs"},
+            {"mnem": "vsubsws"},
+            {"mnem": "vmaxub"},
+            {"mnem": "vmaxuh"},
+            {"mnem": "vmaxuw"},
+            {"mnem": "vmaxsb"},
+            {"mnem": "vmaxsh"},
+            {"mnem": "vmaxsw"},
+            {"mnem": "vminub"},
+            {"mnem": "vminuh"},
+            {"mnem": "vminuw"},
+            {"mnem": "vminsb"},
+            {"mnem": "vminsh"},
+            {"mnem": "vminsw"},
+            {"mnem": "vavgub"},
+            {"mnem": "vavguh"},
+            {"mnem": "vavguw"},
+            {"mnem": "vavgsb"},
+            {"mnem": "vavgsh"},
+            {"mnem": "vavgsw"},
+            {"mnem": "vrlb"},
+            {"mnem": "vrlh"},
+            {"mnem": "vrlw"},
+            {"mnem": "vslb"},
+            {"mnem": "vslh"},
+            {"mnem": "vslw"},
+            {"mnem": "vsl"},
+            {"mnem": "vsrb"},
+            {"mnem": "vsrh"},
+            {"mnem": "vsrw"},
+            {"mnem": "vsr"},
+            {"mnem": "vsrab"},
+            {"mnem": "vsrah"},
+            {"mnem": "vsraw"},
+            {"mnem": "vand"},
+            {"mnem": "vandc"},
+            {"mnem": "vor"},
+            {"mnem": "vnor"},
+            {"mnem": "vmuloub"},
+            {"mnem": "vmulouh"},
+            {"mnem": "vmulosb"},
+            {"mnem": "vmulosh"},
+            {"mnem": "vmuleub"},
+            {"mnem": "vmuleuh"},
+            {"mnem": "vmulesb"},
+            {"mnem": "vmulesh"},
+            {"mnem": "vsum4ubs"},
+            {"mnem": "vsum4sbs"},
+            {"mnem": "vsum4shs"},
+            {"mnem": "vsum2sws"},
+            {"mnem": "vsumsws"},
+            {"mnem": "vaddfp"},
+            {"mnem": "vsubfp"},
+            {"mnem": "vmaxfp"},
+            {"mnem": "vminfp"},
+            {"mnem": "vmrghb"},
+            {"mnem": "vmrghh"},
+            {"mnem": "vmrghw"},
+            {"mnem": "vmrglb"},
+            {"mnem": "vmrglh"},
+            {"mnem": "vmrglw"},
+            {"mnem": "vslo"},
+            {"mnem": "vsro"},
+            {"mnem": "vpkuhum"},
+            {"mnem": "vpkuwum"},
+            {"mnem": "vpkuhus"},
+            {"mnem": "vpkuwus"},
+            {"mnem": "vpkshus"},
+            {"mnem": "vpkswus"},
+            {"mnem": "vpkshss"},
+            {"mnem": "vpkswss"},
+            {"mnem": "vpkpx"},
+            {"mnem": "vxor"},
+            {"mnem": "mfvscr"},
+            {"mnem": "mtvscr"},
+            {"mnem": "vrefp"},
+            {"mnem": "vrsqrtefp"},
+            {"mnem": "vexptefp"},
+            {"mnem": "vlogefp"},
+            {"mnem": "vrfin"},
+            {"mnem": "vrfiz"},
+            {"mnem": "vrfip"},
+            {"mnem": "vrfim"},
+            {"mnem": "vupkhsb"},
+            {"mnem": "vupkhsh"},
+            {"mnem": "vupklsb"},
+            {"mnem": "vupklsh"},
+            {"mnem": "vupkhpx"},
+            {"mnem": "vupklpx"},
+            {"mnem": "vcfux"},
+            {"mnem": "vcfsx"},
+            {"mnem": "vctsxs"},
+            {"mnem": "vctuxs"},
+            {"mnem": "vspltb"},
+            {"mnem": "vsplth"},
+            {"mnem": "vspltw"},
+            {"mnem": "vspltisb"},
+            {"mnem": "vspltish"},
+            {"mnem": "vspltisw"},
+            {"mnem": "vcmpbfpx"},
+            {"mnem": "vcmpeqfpx"},
+            {"mnem": "vcmpequbx"},
+            {"mnem": "vcmpequhx"},
+            {"mnem": "vcmpequwx"},
+            {"mnem": "vcmpgefpx"},
+            {"mnem": "vcmpgtfpx"},
+            {"mnem": "vcmpgtsbx"},
+            {"mnem": "vcmpgtshx"},
+            {"mnem": "vcmpgtswx"},
+            {"mnem": "vcmpgtubx"},
+            {"mnem": "vcmpgtuhx"},
+            {"mnem": "vcmpgtuwx"},
+            {"mnem": "lvebx"},
+            {"mnem": "stvebx"},
+            {"mnem": "stvehx"},
+            {"mnem": "stvewx"},
+            {"mnem": "stvx"},
+            {"mnem": "stvxl"},
+            {"mnem": "lvehx"},
+            {"mnem": "lvewx"},
+            {"mnem": "lvsl"},
+            {"mnem": "lvsr"},
+            {"mnem": "lvx"},
+            {"mnem": "lvxl"},
+            {"mnem": "dst"},
+            {"mnem": "dstst"},
+            {"mnem": "dss"}
+        ]
+    },
+    "CSD_PPC_CU71": {
+        "type": "EXE_INSTR_FORB",
+        "files":[
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "instr": [
+            {"mnem": "dcba"}
+        ]
+    },
+    "CSD_PPC_CU72": {
+        "type": "EXE_INSTR_OCCUR",
+        "files":[
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "instr": [
+            {"mnem": "mtspr", "fields": {"spr": 735} }
+        ]
+    },
+    "CSD_PPC_CU73": {
+        "type": "EXE_INSTR_OCCUR",
+        "files":[
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "instr": [
+            {"mnem": "mtspr", "fields": {"spr": 863} }
+        ]
+    },
+    "CSD_PPC_CU74": {
+        "type": "EXE_INSTR_OCCUR",
+        "files":[
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "instr": [
+            {"mnem": "mtsr"},
+            {"mnem": "mtsrin"}
+        ]
+    },
+    "CSD_PPC_CU75": {
+        "type": "EXE_INSTR_OCCUR",
+        "files":[
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "instr": [
+            {"mnem": "mtmsr"}
+        ]
+    },
+    "CSD_PPC_CU76": {
+        "type": "EXE_INSTR_FORB",
+        "files":[
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "instr": [
+            {"mnem": "tlbld"}
+        ]
+    },
+    "CSD_PPC_CU77": {
+        "type": "EXE_INSTR_OFF",
+        "files":[
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "instr": {
+            "incl": {
+                "mnem1" : "mtmsr",
+                "mnem2" : "isync"
+            },
+            "excl": {
+                "mnem1" : ["mfmsr","mfspr", "mtspr"],
+                "mnem2" : ["sync"]
+            },
+            "off": 12
+        }
+    },
+    "CSD_PPC_CU78": {
+        "type": "EXE_INSTR_OCCUR",
+        "files":[
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "instr": [
+            {"mnem": "mtmsr"}
+        ]
+    },
+    "CSD_PPC_CU79": {
+        "type": "EXE_INSTR_FORB",
+        "files":[
+            "x01063_pas_lcap1_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap2_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf",
+            "x01063_pas_lcap3_mv6100-ML4ZC_BSITE_3.4.1_15_B0.elf"
+        ],
+        "instr": [
+            {"mnem": "bcx", "fields": {"AA": 1, "LK":0} },
+            {"mnem": "bcx", "fields": {"AA": 1, "LK":1} }
+        ]
+    }
+}

@@ -1,0 +1,9 @@
+##
+##220603_15h10_x01088_pas_lcap2_src_param_tgz
+##
+../x01088_bch/x01088_pas_lcap2_conf_log_gen_.ado
+x01088_pas_lcap2_src_param_tgz.mk
+../tech_ppc_mvme6100/ppc_mvme6100_rtgz.mk
+../tech_ppc_mvme6100
+x01088_pas_lcap2_src_param.tgz
+x01088_pas_lcap2_src_param_tgz.log
