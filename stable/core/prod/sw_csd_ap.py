@@ -13,9 +13,11 @@ from core.file.disasm import Disasm
 from core.file.src_ada import SrcAdaFile
 from core.file.arch import ArchiveFile
 
+
 class SwCsdApConst():
-    
+
     SW_CONST_CSD_AP_SRC_ADA_LC = 'CSD_AP_SRC_ADA_LC'
+
 
 class SwCsdAp(Sw):
 
@@ -28,11 +30,11 @@ class SwCsdAp(Sw):
         str_file_path = self.d_files[str_file_name]
         elf = ElfFile(str_file_path)
         d_map = elf.get_mapping()
-        
+
         self.d_map[str_file_name] = d_map
 
     def _set_instr(self, str_file_name):
-               
+
         str_file_path = self.d_files[str_file_name]
         elf = ElfFile(str_file_path)
         d_undec_instr = elf.get_instructions()
@@ -46,19 +48,18 @@ class SwCsdAp(Sw):
                 d_instr[str_symb_name] = {'address': str_symb_addr, 'instructions': {}}
 
                 for str_instr_addr, str_instr_bytes in d_undec_instr[str_symb_name]['instructions'].items():
-                    b_instr, d_dec_instr = disassembler.decode_instr(int(str_instr_bytes,16))
+                    b_instr, d_dec_instr = disassembler.decode_instr(int(str_instr_bytes, 16))
                     if b_instr:
-                        d_instr[str_symb_name]['instructions'][str_instr_addr] =  d_dec_instr    
+                        d_instr[str_symb_name]['instructions'][str_instr_addr] = d_dec_instr
 
         self.d_instr[str_file_name] = d_instr
-
 
     def _set_comm(self, str_file_name):
 
         str_file_path = self.d_files[str_file_name]
         elf = ElfFile(str_file_path)
         l_comm = elf.get_comment()
-        
+
         self.d_comm[str_file_name] = l_comm
 
     def _check_constr_prod(self, d_constr):
@@ -71,17 +72,17 @@ class SwCsdAp(Sw):
             d_constr_result = self._check_src_ada_lc(d_constr)
         else:
             pass
-            
+
         return d_constr_result
 
     def _check_src_ada_lc(self, d_constr_csd_ap_lc):
 
-        d_result = {'result': {'types': {}, 'chains': {}}, 'lc': {} }
+        d_result = {'result': {'types': {}, 'chains': {}}, 'lc': {}}
 
         l_chains = d_constr_csd_ap_lc['lc']['chains']
         i_nb_chains = len(d_constr_csd_ap_lc['lc']['chains'])
-        l_sign_chains = [ [ [] for idx_chain in range(i_nb_chains)] for idx_inst in range(self.i_nb_sw_inst)]
-        
+        l_sign_chains = [[[] for idx_chain in range(i_nb_chains)] for idx_inst in range(self.i_nb_sw_inst)]
+
         for str_lc, l_func_const_file in d_constr_csd_ap_lc['lc']['types'].items():
 
             d_result['lc'][str_lc] = [None] * self.i_nb_sw_inst
@@ -96,20 +97,20 @@ class SwCsdAp(Sw):
                     if ArchiveFile.is_archive_file(str_arch_file_path):
                         str_file_path = d_func_const_file['file_path']
                         str_extract_dir_path = os.path.dirname(str_arch_file_path)
-                        str_file_path = ArchiveFile.extract_file(str_arch_file_path, str_file_path, str_extract_dir_path)
+                        str_file_path = ArchiveFile.extract_file(str_arch_file_path, str_file_path,
+                                                                 str_extract_dir_path)
                     else:
                         str_file_path = None
                 else:
                     str_file_name = d_func_const_file['file']
                     str_file_path = self.d_files[str_file_name]
 
-
                 l_sign = []
                 if 'function' in d_func_const_file:
                     str_function_name = d_func_const_file['function']
                     str_return = SrcAdaFile.get_return(str_file_path, str_function_name)
-                    l_C1C2 = SrcAdaFile.get_list_from_1Darray(str_return)
-                    l_sign.append(l_C1C2)
+                    l_c1c2 = SrcAdaFile.get_list_from_1Darray(str_return)
+                    l_sign.append(l_c1c2)
 
                 elif 'constant' in d_func_const_file:
                     str_constant_name = d_func_const_file['constant']
@@ -125,8 +126,7 @@ class SwCsdAp(Sw):
                             l_sign_chains[idx_sw_inst][idx_chain] = l_sign
                         else:
                             l_sign_chains[idx_sw_inst][idx_chain].extend(l_sign)
-            
-        
+
             b_unicity_type = self._check_src_ada_lc_sign(l_sign_type)
             d_result['result']['types'][str_lc] = b_unicity_type
 
@@ -136,31 +136,29 @@ class SwCsdAp(Sw):
             for idx_inst in range(self.i_nb_sw_inst):
                 b_unicity_chain = self._check_src_ada_lc_sign(l_sign_chains[idx_inst][idx_chain])
                 l_results[idx_inst] = b_unicity_chain
-            d_result['result']['chains'][str_chain] = l_results                 
+            d_result['result']['chains'][str_chain] = l_results
 
         return d_result
-
 
     def _check_src_ada_lc_sign(self, l_sign):
 
         b_result = False
-        b_twice_C1C2 = False
+        b_twice_c1c2 = False
 
-        d_C1C2 = {}
-        for l_C1C2 in l_sign:
-            str_C1 = l_C1C2[0]
-            str_C2 = l_C1C2[1]
-            if str_C1 in d_C1C2:
-                if str_C2 in d_C1C2[str_C1]:
-                    b_twice_C1C2 = True
+        d_c1c2 = {}
+        for l_c1c2 in l_sign:
+            str_c1 = l_c1c2[0]
+            str_c2 = l_c1c2[1]
+            if str_c1 in d_c1c2:
+                if str_c2 in d_c1c2[str_c1]:
+                    b_twice_c1c2 = True
                     break
                 else:
-                    d_C1C2[str_C1].append(str_C2)
+                    d_c1c2[str_c1].append(str_c2)
             else:
-                d_C1C2[str_C1] = [str_C2]
+                d_c1c2[str_c1] = [str_c2]
 
-        if not b_twice_C1C2:
+        if not b_twice_c1c2:
             b_result = True
 
         return b_result
-

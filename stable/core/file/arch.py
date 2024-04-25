@@ -7,6 +7,7 @@ import shutil
 
 from .file import copy_file
 
+
 class ArchiveFile:
 
     @staticmethod
@@ -15,7 +16,7 @@ class ArchiveFile:
         b_archive_file = False
 
         if tarfile.is_tarfile(str_file_path):
-           b_archive_file = True
+            b_archive_file = True
         else:
             pass
 
@@ -26,9 +27,9 @@ class ArchiveFile:
         os.chdir(str_extract_dir_path)
         try:
             if str_arch_file_path.lower().endswith('.tgz') or str_arch_file_path.lower().endswith('.tar.gz'):
-                with tarfile.open(str_arch_file_path,'r:gz') as tar_file:
+                with tarfile.open(str_arch_file_path, 'r:gz') as tar_file:
                     tar_file.extractall()
-                    tar_file.close()           
+                    tar_file.close()
         except:
             raise
 
@@ -37,7 +38,7 @@ class ArchiveFile:
         os.chdir(str_extract_dir_path)
         try:
             if str_arch_file_path.lower().endswith('.tgz') or str_arch_file_path.lower().endswith('.tar.gz'):
-                with tarfile.open(str_arch_file_path,'r:gz') as tar_file:
+                with tarfile.open(str_arch_file_path, 'r:gz') as tar_file:
                     tar_file.extract(str_file_path)
                     tar_file.close()
 
@@ -45,14 +46,13 @@ class ArchiveFile:
                     copy_file(str_file_path, str_extract_dir_path)
 
                     match = re.search('(.*?)/', str_file_path)
-                    if None != match:
+                    if match is not None:
                         str_dir_name = match.group(1)
                         str_dir_path = str_extract_dir_path + '/' + str_dir_name
                         shutil.rmtree(str_dir_path, True)
 
-                    str_file_path = str_extract_dir_path + '/' + str_file_name 
-  
-        
+                    str_file_path = str_extract_dir_path + '/' + str_file_name
+
         except:
             raise
 

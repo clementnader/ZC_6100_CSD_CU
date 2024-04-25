@@ -3,10 +3,11 @@ import os
 import stat
 import shutil
 
+
 # Procedure for file copy
 def copy_file(str_filepath, str_dest_dirpath):
 
-    # Exract filename from full path 
+    # Exract filename from full path
     str_filepath_head, str_filepath_tail = os.path.split(str_filepath)
     # Copy file
     shutil.copyfile(str_filepath, str_dest_dirpath + '/' + str_filepath_tail)
@@ -24,4 +25,3 @@ def create_dir(str_dirpath):
                 os.remove(str_filename)
     else:
         os.mkdir(str_dirpath, 777)
-

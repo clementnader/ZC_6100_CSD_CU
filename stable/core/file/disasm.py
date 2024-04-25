@@ -43,7 +43,7 @@ class Disasm(object):
         self._set_forms(d_proc['forms'])
         self._set_instr(d_proc['instr'])
 
-    def _set_endianness(self,str_endianness):
+    def _set_endianness(self, str_endianness):
 
         if 'big-endian' == str_endianness:
             self.e_endianness = Endianness.BIG_ENDIAN
@@ -79,25 +79,24 @@ class Disasm(object):
             self.d_sec_opcd_masks[str_mask]['left'] = d_shifts['left']
             self.d_sec_opcd_masks[str_mask]['right'] = d_shifts['right']
 
-                    
     def _set_fields(self, d_fields):
         self.d_fields = d_fields
 
     def _set_forms(self, d_forms):
         self.d_forms = d_forms
-    
-    def _set_instr(self, d_instr):
-        self.d_instr  = d_instr
 
-    def _get_field_shifts(self,i_start, i_length):
+    def _set_instr(self, d_instr):
+        self.d_instr = d_instr
+
+    def _get_field_shifts(self, i_start, i_length):
 
         if Endianness.BIG_ENDIAN == self.e_endianness:
             i_left_shift = i_start
         elif Endianness.LITTLE_ENDIAN == self.e_endianness:
-            i_left_shift =  self.i_nb_bits - i_start - i_length - 1
+            i_left_shift = self.i_nb_bits - i_start - i_length - 1
 
         i_right_shift = self.i_nb_bits - i_length
-        
+
         d_shifts = {'left': i_left_shift, 'right': i_right_shift}
         return d_shifts
 
@@ -107,12 +106,11 @@ class Disasm(object):
         i_field_value = i_field_value >> i_right
 
         return i_field_value
-    
 
     def decode_instr(self, i_bytes):
 
         b_instr = False
-        
+
         d_dec_instr = {'mnemonic': {}, 'fields': {}}
 
         i_left = self.d_prim_opcd_field['left']
@@ -132,14 +130,14 @@ class Disasm(object):
                         i_left = self.d_sec_opcd_masks[str_mask]['left']
                         i_right = self.d_sec_opcd_masks[str_mask]['right']
                         i_sec_opcd = self._get_field_value(i_bytes, i_left, i_right)
-                        
+
                         str_sec_opcd = str(i_sec_opcd)
                         if str_sec_opcd in self.d_instr[str_prim_opcd][str_form_name]:
 
                             str_mnem = self.d_instr[str_prim_opcd][str_form_name][str_sec_opcd]
                             d_dec_instr['mnemonic'] = str_mnem
                             d_dec_instr['fields'][self.str_sec_opcd_field_name] = i_sec_opcd
-                            b_instr = True                        
+                            b_instr = True
 
                     else:
                         str_mnem = self.d_instr[str_prim_opcd][str_form_name]
@@ -150,14 +148,13 @@ class Disasm(object):
                         for str_field_name, i_bit_start in self.d_forms[str_form_name]['fields'].items():
 
                             i_bit_length = self.d_fields[str_field_name]
-                            d_shifts = self._get_field_shifts(i_bit_start,i_bit_length)
-                            i_field_value = self._get_field_value(i_bytes,d_shifts['left'], d_shifts['right'])
+                            d_shifts = self._get_field_shifts(i_bit_start, i_bit_length)
+                            i_field_value = self._get_field_value(i_bytes, d_shifts['left'], d_shifts['right'])
                             d_dec_instr['fields'][str_field_name] = i_field_value
                         break
 
         return b_instr, d_dec_instr
-            
- 
+
 
 if __name__ == '__main__':
 
@@ -178,9 +175,5 @@ if __name__ == '__main__':
     l_instr.append('4e800021')
 
     for str_instr in l_instr:
-        d_dec_instr = disassembler.decode_instr(int(str_instr,16))
+        d_dec_instr = disassembler.decode_instr(int(str_instr, 16))
         print(d_dec_instr)
-
-    
-
-    

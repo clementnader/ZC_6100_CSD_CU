@@ -8,14 +8,15 @@ import json
 
 # from disassemble import DisasmTarget, Disassembler
 
+
 class ElfFile(object):
 
     str_file_path = None
 
-    str_objdump_path = 'C:/GNATPRO/6.1.2/bin/powerpc-wrs-vxworks-objdump.exe'
-    # str_objdump_path = 'C:/GNATPRO/7.2.2/bin/powerpc-wrs-vxworks-objdump.exe'
-    # str_objdump_path = 'C:/Tornado/host/x86-win32/bin/objdumpppc.exe'
-    # str_objdump_path = 'C:/Users/itoua/Documents/Software/MobaXterm/_home/slash/bin/objdump.exe'
+    str_objdump_path = r'C:/GNATPRO/6.1.2/bin/powerpc-wrs-vxworks-objdump.exe'
+    # str_objdump_path = r'C:/GNATPRO/7.2.2/bin/powerpc-wrs-vxworks-objdump.exe'
+    # str_objdump_path = r'C:/Tornado/host/x86-win32/bin/objdumpppc.exe'
+    # str_objdump_path = r'C:/Users/itoua/Documents/Software/MobaXterm/_home/slash/bin/objdump.exe'
 
     def __init__(self, str_file_path):
         self.str_file_path = str_file_path
@@ -28,7 +29,7 @@ class ElfFile(object):
         re_flag_char1 = '(?P<flag_char1>[l|g|u|!|\s])'
         re_flag_char2 = '(?P<flag_char2>[w|\s])'
         re_flag_char3 = '(?P<flag_char3>[C|\s])'
-        re_flag_char4 = '(?P<flag_char4>[W|\s])'    
+        re_flag_char4 = '(?P<flag_char4>[W|\s])'
         re_flag_char5 = '(?P<flag_char5>[I|i|\s])'
         re_flag_char6 = '(?P<flag_char6>[d|D|\s])'
         re_flag_char7 = '(?P<flag_char7>[f|F|O|\s])'
@@ -39,14 +40,14 @@ class ElfFile(object):
         re_symb_name = '(?P<symb_name>.*)'
 
         re_symb_tab_line = '^' + re_symb_addr_val + '\s'
-        re_symb_tab_line += re_flag_char1 + re_flag_char2 + re_flag_char3 + re_flag_char4 
+        re_symb_tab_line += re_flag_char1 + re_flag_char2 + re_flag_char3 + re_flag_char4
         re_symb_tab_line += re_flag_char5 + re_flag_char6 + re_flag_char7
         re_symb_tab_line += '\s' + re_sect_name + '[\s|\t]+' + re_symb_size_align + '\s' + re_symb_name + '$'
 
         str_elf_dir_path = os.path.dirname(self.str_file_path)
         os.chdir(str_elf_dir_path)
-        
-        str_txt_file_path = self.str_file_path.replace('.elf','_elf_map.txt')
+
+        str_txt_file_path = self.str_file_path.replace('.elf', '_elf_map.txt')
 
         with open(str_txt_file_path, 'w', encoding='latin-1') as workfile:
             objdump_process = subprocess.Popen([self.str_objdump_path, '-t', self.str_file_path], stdout=workfile)
@@ -62,16 +63,15 @@ class ElfFile(object):
                         b_symb = False
                     else:
                         match = re.search(re_symb_tab_line, str_line)
-                        if None != match:
+                        if match is not None:
                             str_sect_name = match.group('sect_name')
                             if str_sect_name not in d_map:
                                 d_map[str_sect_name] = {}
 
-
                             str_symb_addr_val = match.group('symb_addr_val')
 
                             if str_symb_addr_val not in d_map[str_sect_name]:
-                                d_map[str_sect_name][str_symb_addr_val]= []
+                                d_map[str_sect_name][str_symb_addr_val] = []
 
                             d_symb = {}
                             d_symb['name'] = match.group('symb_name')
@@ -90,17 +90,15 @@ class ElfFile(object):
                             d_symb['flags'] = d_flags
 
                             d_map[str_sect_name][str_symb_addr_val].append(d_symb)
-    
+
                 else:
                     if str_line.startswith('SYMBOL TABLE:'):
                         b_symb = True
 
-        
         os.chmod(str_txt_file_path, stat.S_IWRITE)
         os.remove(str_txt_file_path)
-        
-        return d_map     
 
+        return d_map
 
     def get_instructions(self):
 
@@ -121,7 +119,7 @@ class ElfFile(object):
         str_elf_dir_path = os.path.dirname(self.str_file_path)
         os.chdir(str_elf_dir_path)
 
-        str_txt_file_path = self.str_file_path.replace('.elf','_elf_instr.txt')
+        str_txt_file_path = self.str_file_path.replace('.elf', '_elf_instr.txt')
 
         with open(str_txt_file_path, 'w', encoding='latin-1') as workfile:
             objdump_process = subprocess.Popen([self.str_objdump_path, '-d', self.str_file_path], stdout=workfile)
@@ -134,19 +132,19 @@ class ElfFile(object):
                         b_symb = False
                     else:
                         match = re.search(re_instr, str_line)
-                        if None != match:
+                        if match is not None:
                             str_instr_addr = match.group('address')
                             str_instr_bytes = match.group('bytes')
                             str_instr_bytes = str_instr_bytes.replace(' ', '')
-                            d_instr[str_curr_symb_name]['instructions'][str_instr_addr] = str_instr_bytes  
-                
+                            d_instr[str_curr_symb_name]['instructions'][str_instr_addr] = str_instr_bytes
+
                 else:
                     match = re.search(re_symb, str_line)
-                    if None != match:
+                    if match is not None:
                         str_symb_name = match.group('symbol')
                         str_symb_addr = match.group('address')
 
-                        d_instr[str_symb_name] = {'address': str_symb_addr, 'instructions': {} } 
+                        d_instr[str_symb_name] = {'address': str_symb_addr, 'instructions': {}}
 
                         str_curr_symb_name = str_symb_name
                         b_symb = True
@@ -163,11 +161,12 @@ class ElfFile(object):
 
         str_elf_dir_path = os.path.dirname(self.str_file_path)
         os.chdir(str_elf_dir_path)
-        
-        str_txt_file_path = self.str_file_path.replace('.elf','_elf_comm.txt')
+
+        str_txt_file_path = self.str_file_path.replace('.elf', '_elf_comm.txt')
 
         with open(str_txt_file_path, 'w', encoding='latin-1') as workfile:
-            objdump_process = subprocess.Popen([self.str_objdump_path, '-sj', '.comment', self.str_file_path], stdout=workfile)
+            objdump_process = subprocess.Popen([self.str_objdump_path, '-sj', '.comment', self.str_file_path],
+                                               stdout=workfile)
             objdump_process.wait()
 
         str_comm = ''
@@ -175,7 +174,7 @@ class ElfFile(object):
         with open(str_txt_file_path, 'r', encoding='latin-1') as workfile:
             for str_line in workfile:
                 match = re.search(re_comm_line, str_line)
-                if None != match:
+                if match is not None:
                     str_comm_line = match.group(1)
                     str_comm += str_comm_line
 
@@ -189,9 +188,8 @@ class ElfFile(object):
 
         os.chmod(str_txt_file_path, stat.S_IWRITE)
         os.remove(str_txt_file_path)
-                
-        return l_comm
 
+        return l_comm
 
 
 if '__main__' == __name__:
@@ -201,17 +199,18 @@ if '__main__' == __name__:
 
     # disassembler = Disassembler(DisasmTarget.TARGET_PPC_MPC7457)
 
-    # str_elf_dir_path = 'C:/_Ansaldo/Produits/CSD_PPC/Sw_LCAP/d_Code/CSD_LCAP_MVME6100_4.6.1_7/csd_lcap_mvme6100_master/csd_lcap_mvme6100_dev/00csd_lcap1_mvme6100'
-    str_elf_dir_path = 'C:/_Ansaldo/Outils/rtpc/rtpc_data/scm/CBTC_ZC_KCR_LCAP_BSITE_3.4.1_38/3'
+    # str_elf_dir_path = (r'C:/_Ansaldo/Produits/CSD_PPC/Sw_LCAP/d_Code/CSD_LCAP_MVME6100_4.6.1_7/'
+    #                     r'csd_lcap_mvme6100_master/csd_lcap_mvme6100_dev/00csd_lcap1_mvme6100')
+    str_elf_dir_path = r'C:/_Ansaldo/Outils/rtpc/rtpc_data/scm/CBTC_ZC_KCR_LCAP_BSITE_3.4.1_38/3'
     str_elf_file = 'x00981_pas_lcap3_mv6100.elf'
-    str_file_path =  str_elf_dir_path + '/' + str_elf_file
+    str_file_path = str_elf_dir_path + '/' + str_elf_file
     elf_file = ElfFile(str_file_path)
 
     d_map = elf_file.get_mapping()
-    str_json_file = str_elf_file.replace('.elf','_map.json')
+    str_json_file = str_elf_file.replace('.elf', '_map.json')
     str_json_file_path = str_script_dirpath + '/' + str_json_file
 
-    with open(str_json_file_path, 'w', encoding='utf-8') as jsonfile:  
+    with open(str_json_file_path, 'w', encoding='utf-8') as jsonfile:
         json.dump(d_map, jsonfile, indent=4)
 
     # d_instr = elf_file.get_instructions()
@@ -230,7 +229,7 @@ if '__main__' == __name__:
     # str_json_file = str_elf_file.replace('.elf','_instr.json')
     # str_json_file_path = str_script_dirpath + '/' + str_json_file
 
-    # with open(str_json_file_path, 'w', encoding='utf-8') as jsonfile:  
+    # with open(str_json_file_path, 'w', encoding='utf-8') as jsonfile:
     #     json.dump(d_dec_all_instr, jsonfile, indent=4)
 
     # d_csd_ppc_cu = {}
@@ -251,4 +250,3 @@ if '__main__' == __name__:
     #                 d_csd_ppc_cu['CSD_PPC_CU79'][str_symb_name]['instructions'][str_instr_addr] = d_instr
 
     # print(d_csd_ppc_cu)
-

@@ -6,7 +6,7 @@ import re
 class SrcAdaFile:
 
     @classmethod
-    def get_list_from_1Darray(cls,str_1Darray):
+    def get_list_from_1Darray(cls, str_1Darray):
 
         re_1Darray_value = '=>\s+(\d+)'
         l_1Darray_values = re.findall(re_1Darray_value, str_1Darray)
@@ -14,7 +14,7 @@ class SrcAdaFile:
         return l_1Darray_values
 
     @classmethod
-    def get_list_from_2Darray(cls,str_2Darray):
+    def get_list_from_2Darray(cls, str_2Darray):
 
         l_2Darray_values = []
 
@@ -26,7 +26,6 @@ class SrcAdaFile:
             l_2Darray_values.append(l_1Darray_values)
 
         return l_2Darray_values
-
 
     @staticmethod
     def get_constant(str_file_path, str_constant_name):
@@ -61,8 +60,8 @@ class SrcAdaFile:
                                 str_value = match.group('value')
                             break
 
-        str_value = str_value.replace('_','')
-        return str_value    
+        str_value = str_value.replace('_', '')
+        return str_value
 
     @staticmethod
     def get_return(str_file_path, str_function_name):
@@ -72,7 +71,7 @@ class SrcAdaFile:
 
         b_func = False
         str_value = ''
-        
+
         with open(str_file_path, 'r', encoding="utf-8") as workFile:
 
             for str_line in workFile:
@@ -86,22 +85,20 @@ class SrcAdaFile:
                     if match is not None:
                         b_func = True
 
-        str_value = str_value.replace('_','')
+        str_value = str_value.replace('_', '')
         return str_value
 
 
-if '__main__' == __name__ :
+if '__main__' == __name__:
     str_dir_path = 'C:/_Ansaldo/Produits/PAI_NG_SEI2006/Sw_LCAS/d_Code/'
     str_file_path = str_dir_path + 'and_lcap3_sei6.0_e35_i845/Code/sei_lcap3_cfg_svl_csd_mtor2.adb'
-    str_constant_name =  'Svl_Csd_Snv1_Skc_Inin_1'
+    str_constant_name = 'Svl_Csd_Snv1_Skc_Inin_1'
     str_constant = SrcAdaFile.get_constant(str_file_path, str_constant_name)
     l_values = SrcAdaFile.get_list_from_2Darray(str_constant)
     print(l_values)
 
     str_file_path = str_dir_path + 'and_lcap3_sei6.0_e35_i845/Code/csd_lcap3_signature_vle_at.ad6'
     str_function_name = 'SVL_CSD_SNVx_CSD_AT_1'
-    str_return =  SrcAdaFile.get_return(str_file_path, str_function_name)
+    str_return = SrcAdaFile.get_return(str_file_path, str_function_name)
     l_values = SrcAdaFile.get_list_from_1Darray(str_return)
     print(l_values)
-
-
